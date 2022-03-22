@@ -3,7 +3,7 @@ import React from "react";
 const Cart = ({ carts }) => {
   const totalPriceAndCharge = (name, quantity) => {
     let total = 0;
-    carts.map((cart) => {
+    carts.forEach((cart) => {
       if (quantity) {
         // total = 1;
         total += cart[name] * cart.quantity;

@@ -18,7 +18,7 @@ const Shop = () => {
   useEffect(() => {
     const storedCart = getStorageCart()
     let saveCard = []
-    Object.keys(storedCart).map((id) => {
+    Object.keys(storedCart).forEach((id) => {
       const addedProducts = products.find((product) => product.id === id)
       if (addedProducts) {
         addedProducts.quantity = storedCart[id]
