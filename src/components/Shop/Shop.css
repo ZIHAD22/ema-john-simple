@@ -3,3 +3,11 @@
     grid-template-columns: 4fr 1fr;
     margin: 10px 20px;
 }
+.cart-container{
+    position: fixed;
+    right: 50px;
+    min-height: 680px;
+    background-color: #FF99004D;
+    margin-left: 5px;
+    border-radius: 10px;
+}
