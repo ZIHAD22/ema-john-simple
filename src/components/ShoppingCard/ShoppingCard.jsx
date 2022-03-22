@@ -1,3 +1,6 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+
 import React from "react";
 
 import "./ShoppingCard.css";
@@ -24,7 +27,9 @@ const ShoppingCard = ({
           onClick={() => handleAddToCard({ id, price })}
           className="card-footer text-center"
         >
-          <small className="">Add to Cart</small>
+          <small className="">
+            Add to Cart <FontAwesomeIcon icon={faShoppingCart} />{" "}
+          </small>
         </div>
       </div>
     </div>
