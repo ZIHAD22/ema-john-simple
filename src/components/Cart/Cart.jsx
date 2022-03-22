@@ -1,12 +1,21 @@
 import React from "react";
 
-
-const Cart = ({ cart }) => {
+const Cart = ({ carts }) => {
+  const totalPriceAndCharge = (name) => {
+    let totalPrice = 0;
+    carts.map((cart) => (totalPrice += cart[name]));
+    return totalPrice;
+  };
   return (
     <div>
-      <h3>Order Summary</h3>
-      <h5>selected Items : {cart.length}</h5>
-      <h5>Total Price :12</h5>
+      <h3 className="text-center">Order Summary</h3>
+      <div className="pt-5">
+        <h6 className="py-2">selected Items : {carts.length}</h6>
+        <h6 className="py-2">Total Price :${totalPriceAndCharge("price")}</h6>
+        <h6 className="py-2">
+          Total Shipping Charge: ${totalPriceAndCharge("shipping")}
+        </h6>
+      </div>
     </div>
   );
 };
