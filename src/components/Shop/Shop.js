@@ -4,6 +4,7 @@ import {
   deleteShoppingCart,
   getStorageCart,
 } from '../../utilities/fakedb'
+import AddToCartIcon from '../AddToCartIcon/AddToCartIcon'
 import Cart from '../Cart/Cart'
 import ShoppingCard from '../ShoppingCard/ShoppingCard'
 
@@ -51,7 +52,7 @@ const Shop = () => {
     deleteShoppingCart()
   }
   return (
-    <div className="shop-container">
+    <div className="shop-container ">
       <div className="products-container">
         <div className="row g-4">
           {products.map((product) => (
@@ -61,6 +62,9 @@ const Shop = () => {
               product={product}
             />
           ))}
+          <div className="add-cart-position position-fixed top-50">
+            <AddToCartIcon />
+          </div>
         </div>
       </div>
       <div className="cart-container px-5 py-2">

@@ -11,3 +11,17 @@
     margin-left: 5px;
     border-radius: 10px;
 }
+.add-cart-position{
+    left:80%;
+}
+
+@media screen and (max-width:480px) {
+    .shop-container{
+        grid-template-columns: 5fr;
+    }
+    .cart-container{
+        display: none;
+        left: 10px;
+        margin-right: 50px;
+    }
+}

@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "../Button/Button";
+import "./Cart.css";
 
 const Cart = ({ carts, clearAllCarts }) => {
   const totalPriceAndCharge = (name, quantity) => {
@@ -21,7 +22,7 @@ const Cart = ({ carts, clearAllCarts }) => {
     parseFloat(tax);
 
   return (
-    <div>
+    <div className="order-summary">
       <h3 className="text-center">Order Summary</h3>
       <div className="pt-5">
         <h6 className="py-2">
