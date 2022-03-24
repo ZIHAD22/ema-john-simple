@@ -7,3 +7,9 @@
     justify-content: center;
     font-size: 25px;
 }
+
+@media screen and (min-width:480px) and (max-width:992px) {
+    .add-to-cart{
+        font-size: 30px;
+    }
+}
