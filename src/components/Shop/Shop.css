@@ -22,6 +22,9 @@
     .cart-container{
         display: none;
         left: 10px;
+        top:150px;
         margin-right: 50px;
+        background-color: #643e06;
+        color: white;
     }
 }

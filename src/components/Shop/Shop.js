@@ -13,6 +13,7 @@ import './Shop.css'
 const Shop = () => {
   const [products, setProducts] = useState([])
   const [carts, setCarts] = useState([])
+  const [isShowCart, setShowCart] = useState(false)
 
   useEffect(() => {
     fetch('products.json')
@@ -51,6 +52,12 @@ const Shop = () => {
     setCarts([])
     deleteShoppingCart()
   }
+  const isShowingCart = () => {
+    const currentCart = isShowCart
+    setShowCart(!currentCart)
+    console.log('click')
+  }
+
   return (
     <div className="shop-container ">
       <div className="products-container">
@@ -62,12 +69,18 @@ const Shop = () => {
               product={product}
             />
           ))}
-          <div className="add-cart-position position-fixed top-50">
-            <AddToCartIcon />
+          <div className={'add-cart-position position-fixed top-50'}>
+            <AddToCartIcon isShowingCart={isShowingCart} />
           </div>
         </div>
       </div>
-      <div className="cart-container px-5 py-2">
+      <div
+        className={
+          isShowCart === true
+            ? 'cart-container px-5 py-2 d-block'
+            : 'cart-container px-5 py-2'
+        }
+      >
         <Cart carts={carts} clearAllCarts={clearAllCarts} />
       </div>
     </div>
