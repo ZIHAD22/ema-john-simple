@@ -55,7 +55,14 @@ const Shop = () => {
   const isShowingCart = () => {
     const currentCart = isShowCart
     setShowCart(!currentCart)
-    console.log('click')
+  }
+
+  const totalQuantity = () => {
+    let total = 0
+    carts.forEach((cart) => {
+      total += cart.quantity
+    })
+    return total
   }
 
   return (
@@ -69,8 +76,11 @@ const Shop = () => {
               product={product}
             />
           ))}
-          <div className={'add-cart-position position-fixed top-50'}>
-            <AddToCartIcon isShowingCart={isShowingCart} />
+          <div className="add-cart-position position-fixed top-50">
+            <AddToCartIcon
+              isShowingCart={isShowingCart}
+              totalQuantity={totalQuantity}
+            />
           </div>
         </div>
       </div>

@@ -28,3 +28,8 @@
         color: white;
     }
 }
+@media screen and (min-width:480px) {
+    .add-cart-position{
+     display: none;
+    }
+}
