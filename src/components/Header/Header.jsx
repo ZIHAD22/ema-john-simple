@@ -1,15 +1,17 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import logo from "../../images/Logo.svg";
+import CustomLink from "../CustomLink/CustomLink";
 import "./Header.css";
 
 const Header = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark header sticky-top">
       <div className="container">
-        <a className="navbar-brand" href="/">
+        <Link className="navbar-brand" to="/">
           <img src={logo} alt="" />
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -23,18 +25,22 @@ const Header = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNavAltMarkups">
           <div className="navbar-nav ms-auto">
-            <a className="nav-link active" aria-current="page" href="/shop">
+            <CustomLink
+              className="nav-link active"
+              aria-current="page"
+              to="/shop"
+            >
               Shop
-            </a>
-            <a className="nav-link" href="/Oder">
+            </CustomLink>
+            <CustomLink className="nav-link" to="/orders">
               Order
-            </a>
-            <a className="nav-link" href="/Inventory">
+            </CustomLink>
+            <CustomLink className="nav-link" to="/Inventory">
               Inventory
-            </a>
-            <a className="nav-link" href="/About">
+            </CustomLink>
+            <CustomLink className="nav-link" to="/About">
               About
-            </a>
+            </CustomLink>
           </div>
         </div>
       </div>
