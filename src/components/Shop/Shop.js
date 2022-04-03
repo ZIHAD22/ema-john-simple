@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import useCarts from '../../hooks/useCarts'
 import useProducts from '../../hooks/useProducts'
 import {
   addToDb,
@@ -6,6 +8,7 @@ import {
   getStorageCart,
 } from '../../utilities/fakedb'
 import AddToCartIcon from '../AddToCartIcon/AddToCartIcon'
+import Button from '../Button/Button'
 import Cart from '../Cart/Cart'
 import ShoppingCard from '../ShoppingCard/ShoppingCard'
 
@@ -13,21 +16,8 @@ import './Shop.css'
 
 const Shop = () => {
   const [products, setProducts] = useProducts()
-  const [carts, setCarts] = useState([])
+  const [carts, setCarts] = useCarts(products)
   const [isShowCart, setShowCart] = useState(false)
-
-  useEffect(() => {
-    const storedCart = getStorageCart()
-    let saveCard = []
-    Object.keys(storedCart).forEach((id) => {
-      const addedProducts = products.find((product) => product.id === id)
-      if (addedProducts) {
-        addedProducts.quantity = storedCart[id]
-        saveCard.push(addedProducts)
-      }
-    })
-    setCarts(saveCard)
-  }, [products])
 
   const handleAddToCard = (productInfo) => {
     let newCart = []
@@ -86,7 +76,15 @@ const Shop = () => {
             : 'cart-container px-5 py-2'
         }
       >
-        <Cart carts={carts} clearAllCarts={clearAllCarts} />
+        <Cart carts={carts} clearAllCarts={clearAllCarts}>
+          <Link to="/orders">
+            <Button
+              color={'warning text-light w-100'}
+              btnValue={'Review Order'}
+              clearAllCarts={clearAllCarts}
+            />
+          </Link>
+        </Cart>
       </div>
     </div>
   )

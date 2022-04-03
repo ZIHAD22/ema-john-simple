@@ -2,12 +2,11 @@ import React from "react";
 import Button from "../Button/Button";
 import "./Cart.css";
 
-const Cart = ({ carts, clearAllCarts }) => {
-  const totalPriceAndCharge = (name, quantity) => {
+const Cart = ({ carts, clearAllCarts, children }) => {
+  const totalOfEveryThing = (name, quantity) => {
     let total = 0;
     carts.forEach((cart) => {
       if (quantity) {
-        // total = 1;
         total += cart[name] * cart.quantity;
       } else {
         total += cart[name];
@@ -15,10 +14,10 @@ const Cart = ({ carts, clearAllCarts }) => {
     });
     return total;
   };
-  const tax = (totalPriceAndCharge("price", true) * 0.1).toFixed(2);
+  const tax = (totalOfEveryThing("price", true) * 0.1).toFixed(2);
   const grandTotal =
-    totalPriceAndCharge("price", true) +
-    totalPriceAndCharge("shipping", true) +
+    totalOfEveryThing("price", true) +
+    totalOfEveryThing("shipping", true) +
     parseFloat(tax);
 
   return (
@@ -26,13 +25,13 @@ const Cart = ({ carts, clearAllCarts }) => {
       <h3 className="text-center">Order Summary</h3>
       <div className="pt-5">
         <h6 className="py-2">
-          selected Items: {totalPriceAndCharge("quantity")}
+          selected Items: {totalOfEveryThing("quantity")}
         </h6>
         <h6 className="py-2">
-          Total Price: ${totalPriceAndCharge("price", true)}
+          Total Price: ${totalOfEveryThing("price", true)}
         </h6>
         <h6 className="py-2">
-          Total Shipping Charge: ${totalPriceAndCharge("shipping", true)}
+          Total Shipping Charge: ${totalOfEveryThing("shipping", true)}
         </h6>
         <h6 className="py-2">Tax: ${tax}</h6>
         <h6 className="py-2">Grand Total: ${grandTotal} </h6>
@@ -42,11 +41,8 @@ const Cart = ({ carts, clearAllCarts }) => {
           btnValue={"Clear Cart"}
           icon="delete"
         />
-        <Button
-          color={"warning text-light w-100"}
-          btnValue={"Review Order"}
-          clearAllCarts={clearAllCarts}
-        />
+
+        {children}
       </div>
     </div>
   );
