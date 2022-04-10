@@ -41,6 +41,12 @@ const Header = () => {
             <CustomLink className="nav-link" to="/About">
               About
             </CustomLink>
+            <CustomLink className="nav-link" to="/login">
+              Login
+            </CustomLink>
+            <CustomLink className="nav-link" to="/signUp">
+              Sign Up
+            </CustomLink>
           </div>
         </div>
       </div>
