@@ -1,12 +1,15 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Button, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useUpdateProfile } from "react-firebase-hooks/auth";
 import useInputValue from "../../hooks/useInputValue";
 import auth from "../../firebase.init";
 
 const SignUp = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   const {
     email,
     handleEmail,
@@ -18,10 +21,6 @@ const SignUp = () => {
     setName,
     handleName,
   } = useInputValue();
-
-  useEffect(() => {
-    console.log(name, email, password);
-  }, [name, email, password]);
 
   const [createUserWithEmailAndPassword, user, loading, CreateError] =
     useCreateUserWithEmailAndPassword(auth);
@@ -35,6 +34,7 @@ const SignUp = () => {
     e.preventDefault();
     createUserWithEmailAndPassword(email, password).then(() => {
       updateProfile({ displayName: name });
+      navigate(from, { replace: true });
     });
 
     setEmail("");

@@ -1,11 +1,14 @@
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
+import auth from "../../firebase.init";
 
 import logo from "../../images/Logo.svg";
 import CustomLink from "../CustomLink/CustomLink";
 import "./Header.css";
 
 const Header = () => {
+  const [user] = useAuthState(auth);
   return (
     <nav className="navbar navbar-expand-lg navbar-dark header sticky-top">
       <div className="container">
@@ -41,12 +44,20 @@ const Header = () => {
             <CustomLink className="nav-link" to="/About">
               About
             </CustomLink>
-            <CustomLink className="nav-link" to="/login">
-              Login
-            </CustomLink>
-            <CustomLink className="nav-link" to="/signUp">
-              Sign Up
-            </CustomLink>
+            {user?.uid ? (
+              <CustomLink className="nav-link" to="/profile">
+                {user?.displayName}
+              </CustomLink>
+            ) : (
+              <>
+                <CustomLink className="nav-link" to="/login">
+                  Login
+                </CustomLink>
+                <CustomLink className="nav-link" to="/signUp">
+                  Sign Up
+                </CustomLink>
+              </>
+            )}
           </div>
         </div>
       </div>
