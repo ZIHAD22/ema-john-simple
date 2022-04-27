@@ -6,7 +6,7 @@ import React from "react";
 import "./ShoppingCard.css";
 
 const ShoppingCard = ({
-  product: { id, img, name, seller, price, ratings, shipping },
+  product: { _id, img, name, seller, price, ratings, shipping },
   handleAddToCard,
 }) => {
   return (
@@ -24,7 +24,7 @@ const ShoppingCard = ({
           </div>
         </div>
         <div
-          onClick={() => handleAddToCard({ id, price, shipping })}
+          onClick={() => handleAddToCard({ _id, price, shipping })}
           className="card-footer text-center"
         >
           <small className="">

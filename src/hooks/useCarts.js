@@ -8,7 +8,7 @@ const useCarts = (products) => {
     const storedCart = getStorageCart()
     let saveCard = []
     Object.keys(storedCart).forEach((id) => {
-      const addedProducts = products.find((product) => product.id === id)
+      const addedProducts = products.find((product) => product._id === id)
       if (addedProducts) {
         addedProducts.quantity = storedCart[id]
         saveCard.push(addedProducts)
