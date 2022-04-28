@@ -113,12 +113,11 @@ const Shop = () => {
               onChange={(e) => setPageSize(e.target.value)}
               className="border-3 p-2 ms-4"
               name=""
+              defaultValue={10}
               id=""
             >
               <option value="5">5</option>
-              <option value="10" selected>
-                10
-              </option>
+              <option value="10">10</option>
               <option value="15">15</option>
               <option value="20">20</option>
             </select>
